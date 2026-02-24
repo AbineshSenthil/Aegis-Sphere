@@ -1,0 +1,467 @@
+[
+  {
+    "pair_id": "PAIR_001",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"35-45\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"pulmonary_TB_suspect\"], \"cd4_note\": \"CD4=85\"}\nAI proposed staging: IIB\nAI proposed regimen: R-CHOP\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IVB\nCorrected regimen: CHOP + Liposomal_Doxorubicin\nClinical reason: Bone marrow involvement on biopsy confirms Stage IVB. Rituximab unavailable locally.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "35-45",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "pulmonary_TB_suspect"
+        ],
+        "cd4_note": "CD4=85"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_002",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"55-65\", \"hiv_status\": true, \"cancer_type\": \"Kaposi_sarcoma\", \"comorbidities\": [\"HIV+\"], \"cd4_note\": \"CD4=200\"}\nAI proposed staging: T1 I0 S0\nAI proposed regimen: Liposomal_Doxorubicin\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: T1 I1 S1\nCorrected regimen: Liposomal_Doxorubicin + ART optimization\nClinical reason: Immune suppression (CD4=85) and systemic symptoms upgrade to S1. ART regimen needs review.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "55-65",
+        "hiv_status": true,
+        "cancer_type": "Kaposi_sarcoma",
+        "comorbidities": [
+          "HIV+"
+        ],
+        "cd4_note": "CD4=200"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_003",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"35-45\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"renal_impairment\"], \"cd4_note\": \"CD4=310\"}\nAI proposed staging: IIA\nAI proposed regimen: CHOP + Methotrexate\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIA\nCorrected regimen: CHOP (Methotrexate contraindicated \u2014 eGFR < 30)\nClinical reason: Renal impairment makes Methotrexate unsafe. Standard CHOP without MTX.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "35-45",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "renal_impairment"
+        ],
+        "cd4_note": "CD4=310"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_004",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": true, \"cancer_type\": \"lung_adenocarcinoma\", \"comorbidities\": [\"HIV+\", \"active_TB\"], \"cd4_note\": \"CD4=45\"}\nAI proposed staging: IIIA\nAI proposed regimen: Carboplatin + Paclitaxel\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIIA\nCorrected regimen: Defer chemo \u2014 treat TB first. Reassess in 8 weeks.\nClinical reason: Active TB must be treated before cytotoxic chemotherapy. AI missed active infection flag.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": true,
+        "cancer_type": "lung_adenocarcinoma",
+        "comorbidities": [
+          "HIV+",
+          "active_TB"
+        ],
+        "cd4_note": "CD4=45"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_005",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": false, \"cancer_type\": \"cervical_cancer\", \"comorbidities\": [\"diabetes\"], \"cd4_note\": \"CD4=85\"}\nAI proposed staging: IIB\nAI proposed regimen: Cisplatin + RT\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIB\nCorrected regimen: Carboplatin + RT (Cisplatin out of stock)\nClinical reason: Cisplatin unavailable. Carboplatin is equivalent in concurrent chemoradiation for cervical cancer.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": false,
+        "cancer_type": "cervical_cancer",
+        "comorbidities": [
+          "diabetes"
+        ],
+        "cd4_note": "CD4=85"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_006",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"25-35\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"pulmonary_TB_suspect\"], \"cd4_note\": \"CD4=200\"}\nAI proposed staging: IIB\nAI proposed regimen: R-CHOP\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IVB\nCorrected regimen: CHOP + Liposomal_Doxorubicin\nClinical reason: Bone marrow involvement on biopsy confirms Stage IVB. Rituximab unavailable locally.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "25-35",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "pulmonary_TB_suspect"
+        ],
+        "cd4_note": "CD4=200"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_007",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"55-65\", \"hiv_status\": true, \"cancer_type\": \"Kaposi_sarcoma\", \"comorbidities\": [\"HIV+\"], \"cd4_note\": \"CD4=120\"}\nAI proposed staging: T1 I0 S0\nAI proposed regimen: Liposomal_Doxorubicin\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: T1 I1 S1\nCorrected regimen: Liposomal_Doxorubicin + ART optimization\nClinical reason: Immune suppression (CD4=85) and systemic symptoms upgrade to S1. ART regimen needs review.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "55-65",
+        "hiv_status": true,
+        "cancer_type": "Kaposi_sarcoma",
+        "comorbidities": [
+          "HIV+"
+        ],
+        "cd4_note": "CD4=120"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_008",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"25-35\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"renal_impairment\"], \"cd4_note\": \"CD4=45\"}\nAI proposed staging: IIA\nAI proposed regimen: CHOP + Methotrexate\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIA\nCorrected regimen: CHOP (Methotrexate contraindicated \u2014 eGFR < 30)\nClinical reason: Renal impairment makes Methotrexate unsafe. Standard CHOP without MTX.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "25-35",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "renal_impairment"
+        ],
+        "cd4_note": "CD4=45"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_009",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": true, \"cancer_type\": \"lung_adenocarcinoma\", \"comorbidities\": [\"HIV+\", \"active_TB\"], \"cd4_note\": \"CD4=310\"}\nAI proposed staging: IIIA\nAI proposed regimen: Carboplatin + Paclitaxel\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIIA\nCorrected regimen: Defer chemo \u2014 treat TB first. Reassess in 8 weeks.\nClinical reason: Active TB must be treated before cytotoxic chemotherapy. AI missed active infection flag.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": true,
+        "cancer_type": "lung_adenocarcinoma",
+        "comorbidities": [
+          "HIV+",
+          "active_TB"
+        ],
+        "cd4_note": "CD4=310"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_010",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": false, \"cancer_type\": \"cervical_cancer\", \"comorbidities\": [\"diabetes\"], \"cd4_note\": \"CD4=85\"}\nAI proposed staging: IIB\nAI proposed regimen: Cisplatin + RT\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIB\nCorrected regimen: Carboplatin + RT (Cisplatin out of stock)\nClinical reason: Cisplatin unavailable. Carboplatin is equivalent in concurrent chemoradiation for cervical cancer.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": false,
+        "cancer_type": "cervical_cancer",
+        "comorbidities": [
+          "diabetes"
+        ],
+        "cd4_note": "CD4=85"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_011",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"pulmonary_TB_suspect\"], \"cd4_note\": \"CD4=85\"}\nAI proposed staging: IIB\nAI proposed regimen: R-CHOP\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IVB\nCorrected regimen: CHOP + Liposomal_Doxorubicin\nClinical reason: Bone marrow involvement on biopsy confirms Stage IVB. Rituximab unavailable locally.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "pulmonary_TB_suspect"
+        ],
+        "cd4_note": "CD4=85"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_012",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"35-45\", \"hiv_status\": true, \"cancer_type\": \"Kaposi_sarcoma\", \"comorbidities\": [\"HIV+\"], \"cd4_note\": \"CD4=85\"}\nAI proposed staging: T1 I0 S0\nAI proposed regimen: Liposomal_Doxorubicin\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: T1 I1 S1\nCorrected regimen: Liposomal_Doxorubicin + ART optimization\nClinical reason: Immune suppression (CD4=85) and systemic symptoms upgrade to S1. ART regimen needs review.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "35-45",
+        "hiv_status": true,
+        "cancer_type": "Kaposi_sarcoma",
+        "comorbidities": [
+          "HIV+"
+        ],
+        "cd4_note": "CD4=85"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_013",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"renal_impairment\"], \"cd4_note\": \"CD4=85\"}\nAI proposed staging: IIA\nAI proposed regimen: CHOP + Methotrexate\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIA\nCorrected regimen: CHOP (Methotrexate contraindicated \u2014 eGFR < 30)\nClinical reason: Renal impairment makes Methotrexate unsafe. Standard CHOP without MTX.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "renal_impairment"
+        ],
+        "cd4_note": "CD4=85"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_014",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"55-65\", \"hiv_status\": true, \"cancer_type\": \"lung_adenocarcinoma\", \"comorbidities\": [\"HIV+\", \"active_TB\"], \"cd4_note\": \"CD4=45\"}\nAI proposed staging: IIIA\nAI proposed regimen: Carboplatin + Paclitaxel\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIIA\nCorrected regimen: Defer chemo \u2014 treat TB first. Reassess in 8 weeks.\nClinical reason: Active TB must be treated before cytotoxic chemotherapy. AI missed active infection flag.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "55-65",
+        "hiv_status": true,
+        "cancer_type": "lung_adenocarcinoma",
+        "comorbidities": [
+          "HIV+",
+          "active_TB"
+        ],
+        "cd4_note": "CD4=45"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_015",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"25-35\", \"hiv_status\": false, \"cancer_type\": \"cervical_cancer\", \"comorbidities\": [\"diabetes\"], \"cd4_note\": \"CD4=85\"}\nAI proposed staging: IIB\nAI proposed regimen: Cisplatin + RT\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIB\nCorrected regimen: Carboplatin + RT (Cisplatin out of stock)\nClinical reason: Cisplatin unavailable. Carboplatin is equivalent in concurrent chemoradiation for cervical cancer.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "25-35",
+        "hiv_status": false,
+        "cancer_type": "cervical_cancer",
+        "comorbidities": [
+          "diabetes"
+        ],
+        "cd4_note": "CD4=85"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_016",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"pulmonary_TB_suspect\"], \"cd4_note\": \"CD4=310\"}\nAI proposed staging: IIB\nAI proposed regimen: R-CHOP\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IVB\nCorrected regimen: CHOP + Liposomal_Doxorubicin\nClinical reason: Bone marrow involvement on biopsy confirms Stage IVB. Rituximab unavailable locally.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "pulmonary_TB_suspect"
+        ],
+        "cd4_note": "CD4=310"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_017",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": true, \"cancer_type\": \"Kaposi_sarcoma\", \"comorbidities\": [\"HIV+\"], \"cd4_note\": \"CD4=200\"}\nAI proposed staging: T1 I0 S0\nAI proposed regimen: Liposomal_Doxorubicin\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: T1 I1 S1\nCorrected regimen: Liposomal_Doxorubicin + ART optimization\nClinical reason: Immune suppression (CD4=85) and systemic symptoms upgrade to S1. ART regimen needs review.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": true,
+        "cancer_type": "Kaposi_sarcoma",
+        "comorbidities": [
+          "HIV+"
+        ],
+        "cd4_note": "CD4=200"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_018",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"renal_impairment\"], \"cd4_note\": \"CD4=310\"}\nAI proposed staging: IIA\nAI proposed regimen: CHOP + Methotrexate\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIA\nCorrected regimen: CHOP (Methotrexate contraindicated \u2014 eGFR < 30)\nClinical reason: Renal impairment makes Methotrexate unsafe. Standard CHOP without MTX.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "renal_impairment"
+        ],
+        "cd4_note": "CD4=310"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_019",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"25-35\", \"hiv_status\": true, \"cancer_type\": \"lung_adenocarcinoma\", \"comorbidities\": [\"HIV+\", \"active_TB\"], \"cd4_note\": \"CD4=200\"}\nAI proposed staging: IIIA\nAI proposed regimen: Carboplatin + Paclitaxel\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIIA\nCorrected regimen: Defer chemo \u2014 treat TB first. Reassess in 8 weeks.\nClinical reason: Active TB must be treated before cytotoxic chemotherapy. AI missed active infection flag.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "25-35",
+        "hiv_status": true,
+        "cancer_type": "lung_adenocarcinoma",
+        "comorbidities": [
+          "HIV+",
+          "active_TB"
+        ],
+        "cd4_note": "CD4=200"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_020",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"25-35\", \"hiv_status\": false, \"cancer_type\": \"cervical_cancer\", \"comorbidities\": [\"diabetes\"], \"cd4_note\": \"CD4=310\"}\nAI proposed staging: IIB\nAI proposed regimen: Cisplatin + RT\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIB\nCorrected regimen: Carboplatin + RT (Cisplatin out of stock)\nClinical reason: Cisplatin unavailable. Carboplatin is equivalent in concurrent chemoradiation for cervical cancer.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "25-35",
+        "hiv_status": false,
+        "cancer_type": "cervical_cancer",
+        "comorbidities": [
+          "diabetes"
+        ],
+        "cd4_note": "CD4=310"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_021",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"35-45\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"pulmonary_TB_suspect\"], \"cd4_note\": \"CD4=45\"}\nAI proposed staging: IIB\nAI proposed regimen: R-CHOP\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IVB\nCorrected regimen: CHOP + Liposomal_Doxorubicin\nClinical reason: Bone marrow involvement on biopsy confirms Stage IVB. Rituximab unavailable locally.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "35-45",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "pulmonary_TB_suspect"
+        ],
+        "cd4_note": "CD4=45"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_022",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": true, \"cancer_type\": \"Kaposi_sarcoma\", \"comorbidities\": [\"HIV+\"], \"cd4_note\": \"CD4=200\"}\nAI proposed staging: T1 I0 S0\nAI proposed regimen: Liposomal_Doxorubicin\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: T1 I1 S1\nCorrected regimen: Liposomal_Doxorubicin + ART optimization\nClinical reason: Immune suppression (CD4=85) and systemic symptoms upgrade to S1. ART regimen needs review.",
+    "metadata": {
+      "ai_was_wrong_about": "staging",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": true,
+        "cancer_type": "Kaposi_sarcoma",
+        "comorbidities": [
+          "HIV+"
+        ],
+        "cd4_note": "CD4=200"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_023",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"55-65\", \"hiv_status\": true, \"cancer_type\": \"B-cell_lymphoma\", \"comorbidities\": [\"HIV+\", \"renal_impairment\"], \"cd4_note\": \"CD4=45\"}\nAI proposed staging: IIA\nAI proposed regimen: CHOP + Methotrexate\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIA\nCorrected regimen: CHOP (Methotrexate contraindicated \u2014 eGFR < 30)\nClinical reason: Renal impairment makes Methotrexate unsafe. Standard CHOP without MTX.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "55-65",
+        "hiv_status": true,
+        "cancer_type": "B-cell_lymphoma",
+        "comorbidities": [
+          "HIV+",
+          "renal_impairment"
+        ],
+        "cd4_note": "CD4=45"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_024",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"35-45\", \"hiv_status\": true, \"cancer_type\": \"lung_adenocarcinoma\", \"comorbidities\": [\"HIV+\", \"active_TB\"], \"cd4_note\": \"CD4=120\"}\nAI proposed staging: IIIA\nAI proposed regimen: Carboplatin + Paclitaxel\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIIA\nCorrected regimen: Defer chemo \u2014 treat TB first. Reassess in 8 weeks.\nClinical reason: Active TB must be treated before cytotoxic chemotherapy. AI missed active infection flag.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "35-45",
+        "hiv_status": true,
+        "cancer_type": "lung_adenocarcinoma",
+        "comorbidities": [
+          "HIV+",
+          "active_TB"
+        ],
+        "cd4_note": "CD4=120"
+      }
+    }
+  },
+  {
+    "pair_id": "PAIR_025",
+    "instruction": "You are an oncology AI assistant for an LMIC TB/HIV clinic. Given the patient case below, output the correct TNM staging and a resource-constrained treatment regimen that respects local drug availability.",
+    "input": "Patient profile: {\"age_band\": \"45-55\", \"hiv_status\": false, \"cancer_type\": \"cervical_cancer\", \"comorbidities\": [\"diabetes\"], \"cd4_note\": \"CD4=45\"}\nAI proposed staging: IIB\nAI proposed regimen: Cisplatin + RT\nLocal inventory note: drugs may be out of stock.",
+    "output": "Corrected staging: IIB\nCorrected regimen: Carboplatin + RT (Cisplatin out of stock)\nClinical reason: Cisplatin unavailable. Carboplatin is equivalent in concurrent chemoradiation for cervical cancer.",
+    "metadata": {
+      "ai_was_wrong_about": "regimen",
+      "patient_profile": {
+        "age_band": "45-55",
+        "hiv_status": false,
+        "cancer_type": "cervical_cancer",
+        "comorbidities": [
+          "diabetes"
+        ],
+        "cd4_note": "CD4=45"
+      }
+    }
+  }
+]

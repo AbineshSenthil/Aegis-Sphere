@@ -1,0 +1,225 @@
+[
+    {
+        "case_id": "SYN_001",
+        "demographics": {
+            "age": 38,
+            "sex": "male",
+            "region": "Sub-Saharan Africa"
+        },
+        "hiv_status": true,
+        "cd4": 85,
+        "art_regimen": "TLD",
+        "cancer_type": "DLBCL",
+        "stage_ground_truth": "IIB",
+        "regimen_ground_truth": "CHOP",
+        "tb_status": "suspect",
+        "comorbidities": [
+            "pulmonary_TB_suspect"
+        ],
+        "modalities_available": [
+            "audio",
+            "cxr",
+            "derm",
+            "histopathology",
+            "cough"
+        ]
+    },
+    {
+        "case_id": "SYN_002",
+        "demographics": {
+            "age": 28,
+            "sex": "female",
+            "region": "South Asia"
+        },
+        "hiv_status": true,
+        "cd4": 45,
+        "art_regimen": "TLD",
+        "cancer_type": "Kaposi_Sarcoma",
+        "stage_ground_truth": "T1 I1 S1",
+        "regimen_ground_truth": "Liposomal_Doxorubicin + ART optimization",
+        "tb_status": "negative",
+        "comorbidities": [],
+        "modalities_available": [
+            "audio",
+            "derm"
+        ]
+    },
+    {
+        "case_id": "SYN_003",
+        "demographics": {
+            "age": 52,
+            "sex": "male",
+            "region": "East Africa"
+        },
+        "hiv_status": true,
+        "cd4": 200,
+        "art_regimen": "TLD",
+        "cancer_type": "DLBCL",
+        "stage_ground_truth": "IVB",
+        "regimen_ground_truth": "CHOP + dose-adjusted Etoposide",
+        "tb_status": "negative",
+        "comorbidities": [
+            "renal_impairment"
+        ],
+        "modalities_available": [
+            "audio",
+            "cxr",
+            "histopathology",
+            "cough"
+        ]
+    },
+    {
+        "case_id": "SYN_004",
+        "demographics": {
+            "age": 42,
+            "sex": "male",
+            "region": "Sub-Saharan Africa"
+        },
+        "hiv_status": true,
+        "cd4": 120,
+        "art_regimen": "TLD",
+        "cancer_type": "Lung_Adenocarcinoma",
+        "stage_ground_truth": "IIIA",
+        "regimen_ground_truth": "Defer chemo — treat TB first",
+        "tb_status": "active",
+        "comorbidities": [
+            "active_TB"
+        ],
+        "modalities_available": [
+            "audio",
+            "cxr",
+            "cough"
+        ]
+    },
+    {
+        "case_id": "SYN_005",
+        "demographics": {
+            "age": 55,
+            "sex": "female",
+            "region": "South Asia"
+        },
+        "hiv_status": false,
+        "cd4": null,
+        "art_regimen": null,
+        "cancer_type": "Cervical_Cancer",
+        "stage_ground_truth": "IIB",
+        "regimen_ground_truth": "Carboplatin + RT",
+        "tb_status": "negative",
+        "comorbidities": [
+            "diabetes"
+        ],
+        "modalities_available": [
+            "audio",
+            "cxr"
+        ]
+    },
+    {
+        "case_id": "SYN_006",
+        "demographics": {
+            "age": 33,
+            "sex": "male",
+            "region": "West Africa"
+        },
+        "hiv_status": true,
+        "cd4": 65,
+        "art_regimen": "TLD",
+        "cancer_type": "DLBCL",
+        "stage_ground_truth": "IIIB",
+        "regimen_ground_truth": "CHOP",
+        "tb_status": "suspect",
+        "comorbidities": [
+            "hepatitis_B"
+        ],
+        "modalities_available": [
+            "audio"
+        ]
+    },
+    {
+        "case_id": "SYN_007",
+        "demographics": {
+            "age": 45,
+            "sex": "female",
+            "region": "East Africa"
+        },
+        "hiv_status": true,
+        "cd4": 150,
+        "art_regimen": "TLD",
+        "cancer_type": "Burkitt_Lymphoma",
+        "stage_ground_truth": "IVA",
+        "regimen_ground_truth": "Modified CODOX-M",
+        "tb_status": "negative",
+        "comorbidities": [],
+        "modalities_available": [
+            "audio",
+            "cxr",
+            "histopathology"
+        ]
+    },
+    {
+        "case_id": "SYN_008",
+        "demographics": {
+            "age": 60,
+            "sex": "male",
+            "region": "Southern Africa"
+        },
+        "hiv_status": true,
+        "cd4": 310,
+        "art_regimen": "TLD",
+        "cancer_type": "TB_only",
+        "stage_ground_truth": "N/A",
+        "regimen_ground_truth": "Rifabutin + HAART switch",
+        "tb_status": "confirmed",
+        "comorbidities": [],
+        "modalities_available": [
+            "audio",
+            "cxr",
+            "cough"
+        ]
+    },
+    {
+        "case_id": "SYN_009",
+        "demographics": {
+            "age": 25,
+            "sex": "female",
+            "region": "Sub-Saharan Africa"
+        },
+        "hiv_status": true,
+        "cd4": 90,
+        "art_regimen": "TLD",
+        "cancer_type": "Kaposi_Sarcoma",
+        "stage_ground_truth": "T1 I1 S0",
+        "regimen_ground_truth": "ART intensification",
+        "tb_status": "negative",
+        "comorbidities": [],
+        "modalities_available": [
+            "audio",
+            "derm"
+        ]
+    },
+    {
+        "case_id": "SYN_010",
+        "demographics": {
+            "age": 48,
+            "sex": "male",
+            "region": "Central Africa"
+        },
+        "hiv_status": true,
+        "cd4": 75,
+        "art_regimen": "TLD",
+        "cancer_type": "DLBCL",
+        "stage_ground_truth": "IIB",
+        "regimen_ground_truth": "CHOP",
+        "tb_status": "suspect",
+        "comorbidities": [
+            "anemia",
+            "malnutrition"
+        ],
+        "modalities_available": [
+            "audio",
+            "cxr",
+            "cough",
+            "histopathology",
+            "derm"
+        ]
+    }
+]

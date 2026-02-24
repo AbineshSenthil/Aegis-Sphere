@@ -1,0 +1,57 @@
+[
+  {
+    "case_id": "CASE_001",
+    "image_file": "case_1_cxr.jpg",
+    "modality": "CXR",
+    "diagnosis": "Pulmonary TB + HIV-associated lymphoma",
+    "staging": "Stage IIB",
+    "treatment": "Rifabutin-based TB + CHOP",
+    "outcome": "Reference case",
+    "hiv_status": true,
+    "cd4": 85
+  },
+  {
+    "case_id": "CASE_002",
+    "image_file": "case_2_cxr.jpg",
+    "modality": "CXR",
+    "diagnosis": "HIV-associated NHL, pulmonary involvement",
+    "staging": "Stage IVA",
+    "treatment": "CHOP + Liposomal Doxorubicin",
+    "outcome": "Reference case",
+    "hiv_status": true,
+    "cd4": 120
+  },
+  {
+    "case_id": "CASE_003",
+    "image_file": "case_3_derm.jpg",
+    "modality": "Derm",
+    "diagnosis": "Kaposi Sarcoma cutaneous",
+    "staging": "T1 I0 S0",
+    "treatment": "ART intensification + Lipo Doxorubicin",
+    "outcome": "Reference case",
+    "hiv_status": true,
+    "cd4": 45
+  },
+  {
+    "case_id": "CASE_004",
+    "image_file": "case_4_path.jpg",
+    "modality": "Histopathology",
+    "diagnosis": "High-grade B-cell lymphoma, lymph node",
+    "staging": "Stage IIB",
+    "treatment": "CHOP + dose-adjusted Etoposide",
+    "outcome": "Reference case",
+    "hiv_status": true,
+    "cd4": 200
+  },
+  {
+    "case_id": "CASE_005",
+    "image_file": "case_5_cxr.jpg",
+    "modality": "CXR",
+    "diagnosis": "TB-HIV coinfection, no malignancy",
+    "staging": "N/A",
+    "treatment": "Rifabutin + HAART switch to Dolutegravir",
+    "outcome": "Reference case",
+    "hiv_status": true,
+    "cd4": 310
+  }
+]

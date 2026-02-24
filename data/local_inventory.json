@@ -1,0 +1,155 @@
+{
+    "facility": "District Hospital — Level 2 (LMIC)",
+    "location": "Sub-Saharan Africa",
+    "last_updated": "2025-01-15",
+    "available_drugs": [
+        {
+            "name": "Cyclophosphamide",
+            "form": "IV",
+            "stock_qty": 50,
+            "unit": "vials",
+            "cost_inr": 250
+        },
+        {
+            "name": "Doxorubicin",
+            "form": "IV",
+            "stock_qty": 0,
+            "unit": "vials",
+            "cost_inr": 600
+        },
+        {
+            "name": "Vincristine",
+            "form": "IV",
+            "stock_qty": 40,
+            "unit": "vials",
+            "cost_inr": 350
+        },
+        {
+            "name": "Prednisone",
+            "form": "Oral",
+            "stock_qty": 200,
+            "unit": "tablets",
+            "cost_inr": 5
+        },
+        {
+            "name": "Liposomal_Doxorubicin",
+            "form": "IV",
+            "stock_qty": 10,
+            "unit": "vials",
+            "cost_inr": 12000
+        },
+        {
+            "name": "Etoposide",
+            "form": "IV/Oral",
+            "stock_qty": 25,
+            "unit": "vials",
+            "cost_inr": 800
+        },
+        {
+            "name": "Carboplatin",
+            "form": "IV",
+            "stock_qty": 15,
+            "unit": "vials",
+            "cost_inr": 1500
+        },
+        {
+            "name": "Paclitaxel",
+            "form": "IV",
+            "stock_qty": 12,
+            "unit": "vials",
+            "cost_inr": 3000
+        },
+        {
+            "name": "Tenofovir",
+            "form": "Oral",
+            "stock_qty": 500,
+            "unit": "tablets",
+            "cost_inr": 15
+        },
+        {
+            "name": "Lamivudine",
+            "form": "Oral",
+            "stock_qty": 500,
+            "unit": "tablets",
+            "cost_inr": 10
+        },
+        {
+            "name": "Dolutegravir",
+            "form": "Oral",
+            "stock_qty": 400,
+            "unit": "tablets",
+            "cost_inr": 25
+        },
+        {
+            "name": "Rifabutin",
+            "form": "Oral",
+            "stock_qty": 100,
+            "unit": "capsules",
+            "cost_inr": 80
+        },
+        {
+            "name": "Isoniazid",
+            "form": "Oral",
+            "stock_qty": 300,
+            "unit": "tablets",
+            "cost_inr": 3
+        },
+        {
+            "name": "Pyrazinamide",
+            "form": "Oral",
+            "stock_qty": 200,
+            "unit": "tablets",
+            "cost_inr": 5
+        },
+        {
+            "name": "Ethambutol",
+            "form": "Oral",
+            "stock_qty": 200,
+            "unit": "tablets",
+            "cost_inr": 8
+        },
+        {
+            "name": "Cotrimoxazole",
+            "form": "Oral",
+            "stock_qty": 600,
+            "unit": "tablets",
+            "cost_inr": 2
+        },
+        {
+            "name": "Fluconazole",
+            "form": "Oral",
+            "stock_qty": 100,
+            "unit": "capsules",
+            "cost_inr": 12
+        },
+        {
+            "name": "G-CSF",
+            "form": "SC",
+            "stock_qty": 8,
+            "unit": "syringes",
+            "cost_inr": 2500
+        }
+    ],
+    "unavailable_drugs": [
+        {
+            "name": "Rituximab",
+            "reason": "Cold chain failure + cost (INR 25,000/dose)",
+            "substitute": "Omit R from R-CHOP → CHOP"
+        },
+        {
+            "name": "Cisplatin",
+            "reason": "Stock depleted, next shipment 6 weeks",
+            "substitute": "Carboplatin"
+        },
+        {
+            "name": "Methotrexate",
+            "reason": "Supply chain disruption",
+            "substitute": "Consult regional center"
+        },
+        {
+            "name": "Bleomycin",
+            "reason": "Not stocked at Level 2",
+            "substitute": "Refer to Level 3 hospital"
+        }
+    ]
+}

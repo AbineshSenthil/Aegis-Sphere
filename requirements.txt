@@ -1,0 +1,49 @@
+# ── CORE PYTORCH (install first via: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121) ──
+torch==2.3.0+cu121
+torchvision==0.18.0+cu121
+torchaudio==2.3.0+cu121
+
+# ── HUGGINGFACE STACK ──
+transformers>=4.42.0
+accelerate>=0.30.0
+bitsandbytes>=0.43.0
+peft>=0.11.0
+trl>=0.8.6
+datasets>=2.19.0
+huggingface_hub>=0.23.0
+
+# ── AUDIO ──
+librosa>=0.10.0
+soundfile
+pyaudio
+#webrtcvad
+
+# ── VISION / MEDICAL IMAGING ──
+Pillow>=10.0.0
+opencv-python
+tensorflow>=2.15.0
+tensorflow-hub
+keras
+
+# ── NLP / ENTITY EXTRACTION ──
+spacy>=3.7.0
+
+# ── VECTOR DATABASE ──
+faiss-cpu
+
+# ── UI ──
+streamlit>=1.35.0
+streamlit-aggrid
+plotly>=5.20.0
+
+# ── VRAM TELEMETRY ──
+psutil
+gputil
+
+# ── UTILITIES ──
+numpy
+pandas
+scipy
+python-dotenv
+requests
+cryptography

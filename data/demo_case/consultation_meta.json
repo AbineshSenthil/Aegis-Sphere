@@ -1,0 +1,9 @@
+{
+  "source_file": "9cc8c2de-8733-4e5b-a18d-5bf9a5166c85.webm",
+  "status": "symptomatic",
+  "age": 45.0,
+  "gender": "male",
+  "respiratory_condition": true,
+  "cough_detected": 0.9777,
+  "note": "Real COUGHVID cough sample \u2014 symptomatic/COVID-19 with respiratory condition"
+}

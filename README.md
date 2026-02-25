@@ -316,9 +316,10 @@ Aegis-Sphere is an **AI-assisted clinical decision support tool** and is **not a
 
 ---
 
-## 📄 License
+## ⚖️ License & Competition Compliance
+In accordance with the official rules of the **Google Med-Gemma Impact Challenge**, both the source code in this repository and the associated Kaggle writeup are openly licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license. 
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+You are free to share and adapt this material for any purpose, even commercially, provided you give appropriate credit to the original creators (Abinesh S & Sasipriya K).
 
 ---
 

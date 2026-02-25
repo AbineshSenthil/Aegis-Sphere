@@ -152,7 +152,7 @@ aegis-sphere/
 ### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/aegis-sphere.git
+git clone https://github.com/AbineshSenthil/aegis-sphere.git
 cd aegis-sphere
 ```
 

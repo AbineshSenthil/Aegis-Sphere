@@ -6,7 +6,7 @@
 [![Kaggle Competition](https://img.shields.io/badge/Kaggle-Med--Gemma%20Impact%20Challenge-blue?logo=kaggle)](https://www.kaggle.com/competitions/med-gemma-impact-challenge)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-red?logo=streamlit)](https://streamlit.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 
 ---
 

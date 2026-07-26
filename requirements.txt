@@ -1,7 +1,7 @@
 # ── CORE PYTORCH (install first via: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121) ──
-torch==2.3.0+cu121
-torchvision==0.18.0+cu121
-torchaudio==2.3.0+cu121
+torch==2.3.0
+torchvision==0.18.0
+torchaudio==2.3.0
 
 # ── HUGGINGFACE STACK ──
 transformers>=4.42.0

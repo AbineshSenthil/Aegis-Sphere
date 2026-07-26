@@ -187,6 +187,7 @@ DEMO_SUBSTITUTIONS = [
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* ── Global Reset ── */
 html, body, [class*="css"] {
@@ -194,155 +195,218 @@ html, body, [class*="css"] {
 }
 
 .main .block-container {
-    padding-top: 1.5rem;
+    padding-top: 1.2rem;
     padding-bottom: 1rem;
-    max-width: 1400px;
+    max-width: 1440px;
 }
 
-/* ── Dark Background ── */
+/* ── Animated Aurora Background ── */
 .stApp {
-    background: linear-gradient(135deg, #0a0f1c 0%, #111827 40%, #0d1117 100%);
+    background: linear-gradient(135deg, #050a18 0%, #0a1628 30%, #0d0f1a 60%, #080c1a 100%);
 }
 
-/* ── Glassmorphism Cards ── */
+/* ── Floating Orbs ── */
+.floating-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 15s ease-in-out infinite alternate;
+}
+@keyframes orbFloat {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-30px) scale(1.1); }
+}
+
+/* ── Glassmorphism Cards v2 ── */
 .glass-card {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(148, 163, 184, 0.1);
-    border-radius: 16px;
-    padding: 20px;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid rgba(148, 163, 184, 0.08);
+    border-radius: 18px;
+    padding: 22px;
     margin-bottom: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.03);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1), border-color 0.3s ease;
 }
 .glass-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.05);
+    border-color: rgba(99,102,241,0.15);
 }
 
 /* ── Hero Header ── */
 .hero-title {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     font-weight: 900;
-    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+    background: linear-gradient(135deg, #60a5fa 0%, #818cf8 30%, #a78bfa 50%, #f472b6 80%, #60a5fa 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 4px;
-    letter-spacing: -1px;
+    margin-bottom: 6px;
+    letter-spacing: -1.5px;
+    animation: heroShimmer 4s linear infinite;
+}
+@keyframes heroShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 .hero-subtitle {
-    font-size: 0.95rem;
-    color: #94a3b8;
+    font-size: 0.92rem;
+    color: #64748b;
     font-weight: 400;
-    letter-spacing: 0.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.hero-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: rgba(99,102,241,0.12);
+    color: #818cf8;
+    border: 1px solid rgba(99,102,241,0.2);
+    margin-top: 8px;
 }
 
 /* ── Section Headers ── */
 .section-header {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: #e2e8f0;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
     gap: 8px;
+    position: relative;
+    padding-left: 12px;
+}
+.section-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 18px;
+    background: linear-gradient(180deg, #6366f1, #a78bfa);
+    border-radius: 2px;
 }
 
 /* ── Status Pill ── */
 .status-pill {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: 100px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.5px;
+    font-family: 'JetBrains Mono', monospace !important;
+    transition: all 0.2s ease;
 }
-.status-ok    { background: rgba(34,197,94,0.15);  color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
-.status-missing { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
-.status-blocked { background: rgba(239,68,68,0.15);  color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+.status-ok    { background: rgba(34,197,94,0.12);  color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
+.status-missing { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); animation: pulseBadge 2s ease-in-out infinite; }
+.status-blocked { background: rgba(239,68,68,0.12);  color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+@keyframes pulseBadge {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.65; }
+}
 
 /* ── Risk Banner ── */
-.risk-red   { background: linear-gradient(90deg, rgba(239,68,68,0.15) 0%, rgba(239,68,68,0.05) 100%);   border-left: 4px solid #ef4444; padding: 12px 16px; border-radius: 8px; }
-.risk-amber { background: linear-gradient(90deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 100%); border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 8px; }
-.risk-green { background: linear-gradient(90deg, rgba(34,197,94,0.15) 0%, rgba(34,197,94,0.05) 100%);   border-left: 4px solid #22c55e; padding: 12px 16px; border-radius: 8px; }
+.risk-red   { background: linear-gradient(90deg, rgba(239,68,68,0.12) 0%, rgba(239,68,68,0.03) 100%);   border-left: 4px solid #ef4444; padding: 14px 18px; border-radius: 10px; }
+.risk-amber { background: linear-gradient(90deg, rgba(245,158,11,0.12) 0%, rgba(245,158,11,0.03) 100%); border-left: 4px solid #f59e0b; padding: 14px 18px; border-radius: 10px; }
+.risk-green { background: linear-gradient(90deg, rgba(34,197,94,0.12) 0%, rgba(34,197,94,0.03) 100%);   border-left: 4px solid #22c55e; padding: 14px 18px; border-radius: 10px; }
 
 /* ── Persona Card ── */
 .persona-card {
+    background: rgba(30, 41, 59, 0.45);
+    border: 1px solid rgba(148, 163, 184, 0.06);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 12px;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+.persona-card:hover {
     background: rgba(30, 41, 59, 0.6);
-    border: 1px solid rgba(148, 163, 184, 0.08);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 10px;
+    border-color: rgba(148, 163, 184, 0.12);
 }
 .persona-name {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: #a78bfa;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace !important;
 }
 .persona-output {
     font-size: 0.88rem;
     color: #cbd5e1;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* ── Patient Letter ── */
 .patient-letter {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    border-radius: 16px;
-    padding: 24px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(59, 130, 246, 0.06) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: 18px;
+    padding: 28px;
     font-size: 0.95rem;
     color: #e2e8f0;
-    line-height: 1.8;
+    line-height: 1.85;
 }
 
 /* ── NBA Checklist ── */
 .nba-item {
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid rgba(245, 158, 11, 0.15);
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-bottom: 6px;
-    color: #fcd34d;
-    font-size: 0.85rem;
-}
-
-/* ── Drug Interaction Cards ── */
-.ddi-card {
+    background: rgba(245, 158, 11, 0.06);
+    border: 1px solid rgba(245, 158, 11, 0.12);
     border-radius: 10px;
     padding: 12px 16px;
     margin-bottom: 8px;
-    transition: transform 0.15s ease;
+    color: #fcd34d;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
 }
-.ddi-card:hover { transform: translateX(3px); }
+.nba-item:hover { background: rgba(245, 158, 11, 0.10); transform: translateX(3px); }
+
+/* ── Drug Interaction Cards ── */
+.ddi-card {
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    transition: all 0.25s cubic-bezier(.4,0,.2,1);
+}
+.ddi-card:hover { transform: translateX(4px); }
 .ddi-critical {
-    background: rgba(239, 68, 68, 0.10);
-    border: 1px solid rgba(239, 68, 68, 0.25);
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
     border-left: 4px solid #ef4444;
 }
 .ddi-moderate {
-    background: rgba(245, 158, 11, 0.10);
-    border: 1px solid rgba(245, 158, 11, 0.25);
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.2);
     border-left: 4px solid #f59e0b;
 }
 .ddi-low {
-    background: rgba(34, 197, 94, 0.10);
-    border: 1px solid rgba(34, 197, 94, 0.25);
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
     border-left: 4px solid #22c55e;
 }
 .ddi-severity-badge {
     display: inline-block;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 0.65rem;
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-size: 0.62rem;
     font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace !important;
 }
 
 /* ── Drug name row inside DDI card ── */
@@ -384,31 +448,34 @@ html, body, [class*="css"] {
 .ddi-table th {
     text-align: left;
     color: #64748b;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 4px 8px 6px 0;
-    border-bottom: 1px solid rgba(148,163,184,0.1);
+    letter-spacing: 0.8px;
+    padding: 6px 8px 8px 0;
+    border-bottom: 1px solid rgba(148,163,184,0.08);
+    font-family: 'JetBrains Mono', monospace !important;
 }
 .ddi-table td {
-    padding: 5px 8px 5px 0;
+    padding: 6px 8px 6px 0;
     color: #cbd5e1;
-    border-bottom: 1px solid rgba(148,163,184,0.05);
+    border-bottom: 1px solid rgba(148,163,184,0.04);
     vertical-align: top;
 }
 .ddi-table td:first-child { color: #e2e8f0; font-weight: 500; }
 
 /* ── Inventory Alert ── */
 .inventory-alert {
-    background: rgba(251, 146, 60, 0.08);
-    border: 1px solid rgba(251, 146, 60, 0.2);
+    background: rgba(251, 146, 60, 0.06);
+    border: 1px solid rgba(251, 146, 60, 0.15);
     border-left: 3px solid #fb923c;
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-bottom: 6px;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
     color: #fdba74;
     font-size: 0.82rem;
+    transition: all 0.2s ease;
 }
+.inventory-alert:hover { background: rgba(251, 146, 60, 0.09); }
 
 /* ── Evidence Trace Table ── */
 .ev-table {
@@ -418,102 +485,163 @@ html, body, [class*="css"] {
 }
 .ev-table th {
     text-align: left;
-    padding: 8px 12px;
-    background: rgba(30,41,59,0.6);
-    color: #94a3b8;
-    font-size: 0.7rem;
+    padding: 10px 14px;
+    background: rgba(30,41,59,0.5);
+    color: #64748b;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid rgba(148,163,184,0.1);
+    letter-spacing: 0.8px;
+    border-bottom: 1px solid rgba(148,163,184,0.08);
+    font-family: 'JetBrains Mono', monospace !important;
 }
 .ev-table td {
-    padding: 8px 12px;
+    padding: 10px 14px;
     vertical-align: top;
-    border-bottom: 1px solid rgba(148,163,184,0.05);
+    border-bottom: 1px solid rgba(148,163,184,0.04);
     color: #cbd5e1;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 .ev-table tr:last-child td { border-bottom: none; }
-.ev-table tr:hover td { background: rgba(30,41,59,0.3); }
+.ev-table tr:hover td { background: rgba(30,41,59,0.25); transition: background 0.2s; }
 
 /* ── Sidebar styling ── */
 section[data-testid="stSidebar"] {
-    background: rgba(15, 23, 42, 0.95);
-    border-right: 1px solid rgba(148, 163, 184, 0.1);
+    background: rgba(8, 12, 28, 0.97);
+    border-right: 1px solid rgba(148, 163, 184, 0.06);
 }
 
 /* ── Metric cards ── */
 .metric-card {
     text-align: center;
-    padding: 12px;
-    background: rgba(30, 41, 59, 0.5);
-    border-radius: 12px;
-    border: 1px solid rgba(148, 163, 184, 0.08);
+    padding: 16px 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.06);
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    overflow: hidden;
 }
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.metric-card:hover::before { opacity: 1; }
+.metric-card:hover { border-color: rgba(99,102,241,0.12); transform: translateY(-2px); }
 .metric-value {
     font-size: 1.8rem;
     font-weight: 800;
     color: #60a5fa;
+    font-family: 'JetBrains Mono', monospace !important;
 }
 .metric-label {
-    font-size: 0.7rem;
-    color: #94a3b8;
+    font-size: 0.65rem;
+    color: #64748b;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+    font-family: 'JetBrains Mono', monospace !important;
+    margin-top: 4px;
 }
 
 /* ── Tab styling ── */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 2px;
-    background: rgba(30, 41, 59, 0.4);
-    border-radius: 12px;
-    padding: 4px;
+    gap: 4px;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 14px;
+    padding: 5px;
+    border: 1px solid rgba(148, 163, 184, 0.06);
 }
 .stTabs [data-baseweb="tab"] {
-    height: 40px;
-    border-radius: 8px;
+    height: 42px;
+    border-radius: 10px;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+.stTabs [data-baseweb="tab"]:hover {
     color: #94a3b8;
-    font-weight: 500;
+    background: rgba(99,102,241,0.06);
 }
 .stTabs [aria-selected="true"] {
-    background: rgba(99, 102, 241, 0.2) !important;
-    color: #818cf8 !important;
+    background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.12)) !important;
+    color: #a5b4fc !important;
+    box-shadow: 0 2px 8px rgba(99,102,241,0.15);
 }
 
 /* ── Button ── */
 .stButton > button {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+    background-size: 200% auto;
     color: white;
     border: none;
-    border-radius: 12px;
-    padding: 12px 24px;
+    border-radius: 14px;
+    padding: 14px 28px;
     font-weight: 700;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(.4,0,.2,1);
     width: 100%;
+    box-shadow: 0 4px 16px rgba(99,102,241,0.25);
 }
 .stButton > button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 28px rgba(99, 102, 241, 0.45);
+    background-position: right center;
 }
 
 /* ── Progress bar ── */
 .stProgress > div > div {
-    background: linear-gradient(90deg, #6366f1, #a78bfa);
+    background: linear-gradient(90deg, #4f46e5, #818cf8, #a78bfa);
+    background-size: 200% auto;
     border-radius: 8px;
+    animation: progressShimmer 2s linear infinite;
+}
+@keyframes progressShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
 /* ── Similar Case Cards ── */
 .sim-case-card {
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 10px;
-    transition: all 0.2s ease;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    transition: all 0.25s cubic-bezier(.4,0,.2,1);
 }
 .sim-case-card:hover {
-    transform: translateX(2px);
+    transform: translateX(3px);
 }
+
+/* ── Fade-in Animation ── */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeSlideUp 0.5s ease-out forwards; }
+
+/* ── Shimmer placeholder ── */
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+.shimmer-text {
+    background: linear-gradient(90deg, #1e293b, #334155, #1e293b);
+    background-size: 200% auto;
+    animation: shimmer 2s linear infinite;
+    border-radius: 6px;
+    color: transparent;
+}
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.35); }
 </style>
 """, unsafe_allow_html=True)
 
@@ -537,9 +665,10 @@ if "current_phase" not in st.session_state:
 # Hero Header
 # ═══════════════════════════════════════════════════════════════
 st.markdown(f"""
-<div style="text-align:center; padding: 10px 0 20px 0">
+<div style="text-align:center; padding: 16px 0 24px 0">
     <div class="hero-title">🩺 {APP_TITLE}</div>
     <div class="hero-subtitle">{APP_SUBTITLE}</div>
+    <div class="hero-badge">▸ 8 AI MODELS · 8GB VRAM · LMIC OPTIMIZED</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -548,6 +677,18 @@ st.markdown(f"""
 # Sidebar — Input & Controls
 # ═══════════════════════════════════════════════════════════════
 with st.sidebar:
+    st.markdown("""
+    <div style="text-align:center; padding:8px 0 16px 0; border-bottom:1px solid rgba(148,163,184,0.06); margin-bottom:16px">
+        <div style="font-size:1.3rem; font-weight:800; background:linear-gradient(135deg,#60a5fa,#a78bfa);
+                    -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:-0.5px">
+            Aegis-Sphere
+        </div>
+        <div style="font-size:0.6rem; color:#475569; text-transform:uppercase; letter-spacing:2px; margin-top:2px">
+            Clinical Intelligence
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     st.markdown('<div class="section-header">📁 Patient Data Upload</div>', unsafe_allow_html=True)
 
     audio_file = st.file_uploader(
@@ -586,8 +727,8 @@ with st.sidebar:
         status_class = "status-ok" if available else "status-missing"
         status_text = "UPLOADED" if available else "MISSING"
         st.markdown(
-            f'<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px">'
-            f'<span style="color:#e2e8f0; font-size:0.85rem">{label}</span>'
+            f'<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:4px 0">'
+            f'<span style="color:#cbd5e1; font-size:0.82rem; font-weight:500">{label}</span>'
             f'<span class="status-pill {status_class}">{status_text}</span></div>',
             unsafe_allow_html=True,
         )
@@ -602,20 +743,35 @@ with st.sidebar:
     elif missing_count <= 3:
         degrade_text, degrade_color = "MINIMAL", "#f87171"
     else:
-        degrade_text, degrade_color = "NO DATA", "#94a3b8"
+        degrade_text, degrade_color = "NO DATA", "#64748b"
 
+    # Circular gauge-style degradation indicator
+    pct = int(((4 - missing_count) / 4) * 100)
     st.markdown(f"""
-    <div style="text-align:center; margin-top:10px; padding:10px; background:rgba(30,41,59,0.5);
-                border-radius:10px; border:1px solid rgba(148,163,184,0.1)">
-        <span style="color:#94a3b8; font-size:0.72rem; text-transform:uppercase; letter-spacing:1px">DEGRADATION LEVEL</span><br>
-        <span style="font-size:1.2rem; font-weight:800; color:{degrade_color}">{degrade_text}</span>
+    <div style="text-align:center; margin-top:12px; padding:16px; background:rgba(15,23,42,0.6);
+                border-radius:14px; border:1px solid rgba(148,163,184,0.06)">
+        <div style="position:relative; width:80px; height:80px; margin:0 auto 8px auto">
+            <svg viewBox="0 0 36 36" style="width:80px; height:80px; transform:rotate(-90deg)">
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      fill="none" stroke="rgba(148,163,184,0.08)" stroke-width="2.5"/>
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      fill="none" stroke="{degrade_color}" stroke-width="2.5"
+                      stroke-dasharray="{pct}, 100" stroke-linecap="round"/>
+            </svg>
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+                        font-size:1.1rem; font-weight:800; color:{degrade_color};
+                        font-family:'JetBrains Mono',monospace">{pct}%</div>
+        </div>
+        <div style="font-size:0.6rem; color:#475569; text-transform:uppercase; letter-spacing:1.5px;
+                    font-family:'JetBrains Mono',monospace">DEGRADATION LEVEL</div>
+        <div style="font-size:0.95rem; font-weight:700; color:{degrade_color}; margin-top:2px">{degrade_text}</div>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("---")
 
     # ── Run Button ──
-    run_clicked = st.button("🚀 Run Aegis Pipeline", use_container_width=True, type="primary")
+    run_clicked = st.button("🚀 Run Aegis Pipeline", width='stretch', type="primary")
 
     # ── Demo Mode Toggle ──
     st.session_state.demo_mode = st.toggle("🎭 Demo Mode", value=st.session_state.demo_mode)
@@ -623,17 +779,34 @@ with st.sidebar:
     st.markdown("---")
 
     # ── VRAM Telemetry (Sidebar) ──
-    st.markdown('<div class="section-header">📈 VRAM Telemetry</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div style="padding:2px 0">
+        <div style="font-size:0.62rem; color:#475569; text-transform:uppercase; letter-spacing:2px;
+                    font-family:'JetBrains Mono',monospace; margin-bottom:10px; padding-left:12px;
+                    border-left:3px solid linear-gradient(180deg,#6366f1,#a78bfa)">
+            📈 VRAM TELEMETRY
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     vram_monitor = st.session_state.vram_monitor
     if st.session_state.pipeline_complete and vram_monitor.get_log():
         fig = vram_monitor.generate_chart()
-        st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
-        st.caption(f"Peak: {vram_monitor.peak_allocated_mb:.0f} MB / {MAX_VRAM_MB} MB")
+        st.plotly_chart(fig, width='stretch', config={"displayModeBar": False})
+        st.markdown(f"""
+        <div style="text-align:center; font-size:0.68rem; color:#475569; font-family:'JetBrains Mono',monospace">
+            Peak: <span style="color:#60a5fa; font-weight:600">{vram_monitor.peak_allocated_mb:.0f} MB</span>
+            / {MAX_VRAM_MB} MB
+        </div>
+        """, unsafe_allow_html=True)
     else:
         demo_fig = vram_monitor.generate_demo_chart()
-        st.plotly_chart(demo_fig, use_container_width=True, config={"displayModeBar": False})
-        st.caption("Demo VRAM profile — run pipeline for live data")
+        st.plotly_chart(demo_fig, width='stretch', config={"displayModeBar": False})
+        st.markdown("""
+        <div style="text-align:center; font-size:0.65rem; color:#334155; font-family:'JetBrains Mono',monospace">
+            Demo VRAM profile — run pipeline for live data
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("---")
 
@@ -649,10 +822,11 @@ with st.sidebar:
     sync_stats = get_override_stats()
     if sync_stats["total"] > 0:
         st.markdown(f"""
-        <div style="padding:8px; background:rgba(30,41,59,0.5); border-radius:8px;
-                    border:1px solid rgba(148,163,184,0.1); margin-top:8px">
-            <span style="color:#94a3b8; font-size:0.7rem">SYNC ENGINE</span><br>
-            <span style="color:#e2e8f0; font-size:0.85rem">
+        <div style="padding:10px 14px; background:rgba(15,23,42,0.6); border-radius:10px;
+                    border:1px solid rgba(148,163,184,0.06); margin-top:8px">
+            <div style="font-size:0.58rem; color:#475569; text-transform:uppercase; letter-spacing:1.5px;
+                        font-family:'JetBrains Mono',monospace; margin-bottom:4px">SYNC ENGINE</div>
+            <span style="color:#cbd5e1; font-size:0.82rem">
                 📦 {sync_stats['total']} overrides · 🔄 {sync_stats['pending']} pending
             </span>
         </div>
@@ -1266,7 +1440,7 @@ if session and st.session_state.pipeline_complete:
                         data=report_html,
                         file_name="aegis_sphere_report.html",
                         mime="text/html",
-                        use_container_width=True,
+                        width='stretch',
                     )
                 except Exception as e:
                     st.warning(f"Report generation failed: {e}")
@@ -1534,18 +1708,56 @@ if session and st.session_state.pipeline_complete:
 # ═══════════════════════════════════════════════════════════════
 else:
     st.markdown("""
-    <div style="text-align:center; padding:40px 20px 10px 20px">
-        <div style="font-size:4rem; margin-bottom:12px">🩺</div>
-        <div style="font-size:1.5rem; font-weight:800; color:#e2e8f0; margin-bottom:8px">
-            Welcome to Aegis-Sphere
+    <div style="text-align:center; padding:48px 20px 16px 20px" class="fade-in">
+        <div style="display:inline-block; padding:6px 20px; border-radius:100px; font-size:0.65rem;
+                    font-weight:600; letter-spacing:2px; text-transform:uppercase;
+                    background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.15);
+                    margin-bottom:16px; font-family:'JetBrains Mono',monospace">
+            ▸ CLINICAL INTELLIGENCE PLATFORM
         </div>
-        <div style="font-size:0.88rem; color:#94a3b8; max-width:800px; margin:0 auto; line-height:1.7">
+        <div style="font-size:2rem; font-weight:800; color:#f1f5f9; margin-bottom:10px; letter-spacing:-1px">
+            Welcome to <span style="background:linear-gradient(135deg,#60a5fa,#a78bfa);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent">Aegis-Sphere</span>
+        </div>
+        <div style="font-size:0.88rem; color:#64748b; max-width:760px; margin:0 auto; line-height:1.8">
             An offline, dual-mode clinical intelligence platform that listens to TB/HIV consultations
             in real time, auto-detects malignancy signals, escalates to a multi-agent virtual tumor board
-            where <strong style="color:#a78bfa">MedGemma 1.5</strong> instances run sequential single-turn
-            persona passes as a <em>Pathologist, Radiologist, and Oncologist</em> before reaching consensus,
-            dynamically routes treatment plans around real drug shortages, and presents empathetic
-            patient-facing handouts — all on <strong style="color:#60a5fa">8 GB VRAM</strong> in an LMIC clinic.
+            where <strong style="color:#a78bfa">MedGemma 1.5</strong> instances run sequential
+            persona passes as a <em style="color:#94a3b8">Pathologist, Radiologist, and Oncologist</em>
+            before reaching consensus, dynamically routes treatment plans around real drug shortages,
+            and presents empathetic patient-facing handouts — all on
+            <strong style="color:#60a5fa">8 GB VRAM</strong> in an LMIC clinic.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ── Pipeline Architecture Strip ──
+    st.markdown("""
+    <div class="glass-card" style="max-width:1000px; margin:0 auto; padding:20px 28px">
+        <div style="text-align:center; margin-bottom:16px">
+            <span style="font-size:0.62rem; color:#475569; text-transform:uppercase; letter-spacing:2px;
+                        font-family:'JetBrains Mono',monospace">PIPELINE ARCHITECTURE</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:6px; align-items:center">
+            <span style="background:rgba(99,102,241,0.12); color:#a5b4fc; padding:5px 12px; border-radius:8px;
+                        font-size:0.72rem; font-weight:600; border:1px solid rgba(99,102,241,0.15)">🎤 MedASR</span>
+            <span style="color:#334155; font-size:0.7rem">→</span>
+            <span style="background:rgba(168,85,247,0.12); color:#c4b5fd; padding:5px 12px; border-radius:8px;
+                        font-size:0.72rem; font-weight:600; border:1px solid rgba(168,85,247,0.15)">🧠 NER Extract</span>
+            <span style="color:#334155; font-size:0.7rem">→</span>
+            <span style="background:rgba(239,68,68,0.12); color:#fca5a5; padding:5px 12px; border-radius:8px;
+                        font-size:0.72rem; font-weight:600; border:1px solid rgba(239,68,68,0.15)">🚨 Mode Bridge</span>
+            <span style="color:#334155; font-size:0.7rem">→</span>
+            <span style="background:rgba(34,197,94,0.12); color:#86efac; padding:5px 12px; border-radius:8px;
+                        font-size:0.72rem; font-weight:600; border:1px solid rgba(34,197,94,0.15)">🫁 Vision AI</span>
+            <span style="color:#334155; font-size:0.7rem">→</span>
+            <span style="background:rgba(245,158,11,0.12); color:#fcd34d; padding:5px 12px; border-radius:8px;
+                        font-size:0.72rem; font-weight:600; border:1px solid rgba(245,158,11,0.15)">⚗️ TxGemma</span>
+            <span style="color:#334155; font-size:0.7rem">→</span>
+            <span style="background:rgba(244,114,182,0.12); color:#f9a8d4; padding:5px 12px; border-radius:8px;
+                        font-size:0.72rem; font-weight:600; border:1px solid rgba(244,114,182,0.15)">🧬 Tumor Board</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1554,11 +1766,15 @@ else:
 
     # Dr. Priya's Day Before/After
     st.markdown("""
-    <div class="glass-card" style="max-width:960px; margin:0 auto">
-        <div class="section-header" style="justify-content:center; margin-bottom:14px">
-            🏥 The Problem: Dr. Priya's Day — Nagpur District HIV Clinic
+    <div class="glass-card" style="max-width:1000px; margin:0 auto">
+        <div style="text-align:center; margin-bottom:16px">
+            <span style="font-size:0.62rem; color:#475569; text-transform:uppercase; letter-spacing:2px;
+                        font-family:'JetBrains Mono',monospace">THE PROBLEM</span>
+            <div style="font-size:1.05rem; font-weight:700; color:#e2e8f0; margin-top:6px">
+                🏥 Dr. Priya's Day — Nagpur District HIV Clinic
+            </div>
         </div>
-        <div style="font-size:0.82rem; color:#94a3b8; text-align:center; margin-bottom:14px; line-height:1.6">
+        <div style="font-size:0.82rem; color:#64748b; text-align:center; margin-bottom:16px; line-height:1.7">
             Dr. Priya sees 40 patients daily. When a 38-year-old HIV+ man presents with a 4-week wet cough,
             weight loss, and cervical lymphadenopathy, she correctly suspects TB — but misses that
             HIV+ patients have an <strong style="color:#f472b6">11.5× standardised incidence ratio for NHL</strong>.
@@ -1566,27 +1782,29 @@ else:
         <table style="width:100%; border-collapse:collapse; font-size:0.78rem">
             <thead>
                 <tr>
-                    <th style="text-align:left; padding:8px 10px; color:#ef4444; border-bottom:1px solid rgba(239,68,68,0.2)">
-                        ❌ Before Aegis-Sphere
+                    <th style="text-align:left; padding:10px 14px; color:#ef4444; border-bottom:1px solid rgba(239,68,68,0.15);
+                              font-size:0.68rem; letter-spacing:0.5px; font-family:'JetBrains Mono',monospace">
+                        ❌ BEFORE
                     </th>
-                    <th style="text-align:left; padding:8px 10px; color:#22c55e; border-bottom:1px solid rgba(34,197,94,0.2)">
-                        ✅ After Aegis-Sphere
+                    <th style="text-align:left; padding:10px 14px; color:#22c55e; border-bottom:1px solid rgba(34,197,94,0.15);
+                              font-size:0.68rem; letter-spacing:0.5px; font-family:'JetBrains Mono',monospace">
+                        ✅ AFTER
                     </th>
                 </tr>
             </thead>
-            <tbody style="color:#cbd5e1">
-                <tr><td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">Suspects TB, starts empiric RHEZ therapy</td>
-                    <td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">Ambient system detects oncology signals within 60s</td></tr>
-                <tr><td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">Patient misclassified on TB therapy for 4–7 weeks</td>
-                    <td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">Escalation: "HIV-related malignancy detected. Activate OncoSphere?"</td></tr>
-                <tr><td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">Lymphoma diagnosis delayed by months → Stage IV</td>
-                    <td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">Virtual tumor board convened. Staging + pathways generated.</td></tr>
-                <tr><td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">R-CHOP prescribed — Rituximab is out of stock</td>
-                    <td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">TxGemma checks inventory → CHOP + Liposomal Dox auto-substituted</td></tr>
-                <tr><td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">Patient leaves with no explanation</td>
-                    <td style="padding:6px 10px; border-bottom:1px solid rgba(148,163,184,0.06)">Grade-5 empathetic patient handout generated by MedGemma Pass 5</td></tr>
-                <tr><td style="padding:6px 10px">No audit trail, no data, no specialist</td>
-                    <td style="padding:6px 10px">Override records synced to big-center board for annotation</td></tr>
+            <tbody style="color:#94a3b8">
+                <tr><td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04)">Suspects TB, starts empiric RHEZ therapy</td>
+                    <td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04); color:#cbd5e1">Ambient system detects oncology signals within 60s</td></tr>
+                <tr><td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04)">Patient misclassified on TB therapy for 4–7 weeks</td>
+                    <td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04); color:#cbd5e1">Escalation: "HIV-related malignancy detected. Activate OncoSphere?"</td></tr>
+                <tr><td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04)">Lymphoma diagnosis delayed by months → Stage IV</td>
+                    <td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04); color:#cbd5e1">Virtual tumor board convened. Staging + pathways generated.</td></tr>
+                <tr><td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04)">R-CHOP prescribed — Rituximab is out of stock</td>
+                    <td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04); color:#cbd5e1">TxGemma checks inventory → CHOP + Liposomal Dox auto-substituted</td></tr>
+                <tr><td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04)">Patient leaves with no explanation</td>
+                    <td style="padding:8px 14px; border-bottom:1px solid rgba(148,163,184,0.04); color:#cbd5e1">Grade-5 empathetic patient handout generated by MedGemma Pass 5</td></tr>
+                <tr><td style="padding:8px 14px">No audit trail, no data, no specialist</td>
+                    <td style="padding:8px 14px; color:#cbd5e1">Override records synced to big-center board for annotation</td></tr>
             </tbody>
         </table>
     </div>
@@ -1597,19 +1815,22 @@ else:
     # Impact Metrics
     im1, im2, im3, im4 = st.columns(4)
     impact_metrics = [
-        ("🎯", "7,500",    "Early diagnoses/yr",  "at 500 pilot clinics"),
-        ("📈", "+30–35%",  "Survival delta",       "Stage IIB vs IV NHL"),
-        ("💊", "−20%",     "Drug waste",           "Blocked Rx prevented"),
-        ("🌍", "75K",      "5-yr scale",           "India + SSA projection"),
+        ("🎯", "7,500",    "Early diagnoses/yr",  "at 500 pilot clinics",  "#6366f1"),
+        ("📈", "+30–35%",  "Survival delta",       "Stage IIB vs IV NHL",  "#22c55e"),
+        ("💊", "−20%",     "Drug waste",           "Blocked Rx prevented", "#f59e0b"),
+        ("🌍", "75K",      "5-yr scale",           "India + SSA projection", "#a78bfa"),
     ]
-    for col_im, (icon, value, label, sub) in zip([im1, im2, im3, im4], impact_metrics):
+    for col_im, (icon, value, label, sub, accent) in zip([im1, im2, im3, im4], impact_metrics):
         with col_im:
             st.markdown(f"""
-            <div class="glass-card" style="text-align:center; min-height:130px">
-                <div style="font-size:1.8rem; margin-bottom:4px">{icon}</div>
-                <div style="font-size:1.6rem; font-weight:800; color:#60a5fa">{value}</div>
-                <div style="font-size:0.75rem; font-weight:600; color:#e2e8f0">{label}</div>
-                <div style="font-size:0.65rem; color:#94a3b8">{sub}</div>
+            <div class="glass-card" style="text-align:center; min-height:140px; position:relative; overflow:hidden">
+                <div style="position:absolute; top:0; left:0; right:0; height:2px;
+                            background:linear-gradient(90deg, transparent, {accent}66, transparent)"></div>
+                <div style="font-size:1.6rem; margin-bottom:6px">{icon}</div>
+                <div style="font-size:1.5rem; font-weight:800; color:{accent};
+                            font-family:'JetBrains Mono',monospace">{value}</div>
+                <div style="font-size:0.72rem; font-weight:600; color:#e2e8f0; margin-top:4px">{label}</div>
+                <div style="font-size:0.62rem; color:#475569; font-family:'JetBrains Mono',monospace">{sub}</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -1617,10 +1838,10 @@ else:
 
     # Upload prompt
     st.markdown("""
-    <div style="text-align:center; padding:10px 20px">
-        <div style="font-size:0.95rem; color:#94a3b8; line-height:1.7">
+    <div style="text-align:center; padding:12px 20px">
+        <div style="font-size:0.92rem; color:#64748b; line-height:1.8">
             Upload patient data in the sidebar (audio, chest X-ray, skin lesion, pathology)
-            and click <strong style="color:#818cf8">Run Aegis Pipeline</strong> to generate a full OncoCase analysis.<br>
+            and click <strong style="color:#a5b4fc">Run Aegis Pipeline</strong> to generate a full OncoCase analysis.<br>
             The system gracefully handles missing data — designed for LMIC clinics where not
             every modality is available.
         </div>
@@ -1629,22 +1850,25 @@ else:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Feature Cards
+    # Feature Cards — 5 columns with gradient top-border accents
     f1, f2, f3, f4, f5 = st.columns(5)
     features = [
-        ("🧠", "8 AI Models",       "MedGemma, TxGemma, HeAR, CXR/Derm/Path, MedSigLIP, MedASR"),
-        ("📈", "VRAM Telemetry",    "Live GPU monitoring with sawtooth phase tracking"),
-        ("🏷️", "Evidence Tags",    "[Source: X] citations grounding every clinical claim"),
-        ("🚨", "Mode Bridge",       "Auto-escalation from TB triage to OncoSphere tumor board"),
-        ("💌", "Patient Letters",   "Grade-5 empathetic handouts with next-step checklists"),
+        ("🧠", "8 AI Models",       "MedGemma, TxGemma, HeAR, CXR/Derm/Path, MedSigLIP, MedASR", "#6366f1"),
+        ("📈", "VRAM Telemetry",    "Live GPU monitoring with sawtooth phase tracking", "#22c55e"),
+        ("🏷️", "Evidence Tags",    "[Source: X] citations grounding every clinical claim", "#f59e0b"),
+        ("🚨", "Mode Bridge",       "Auto-escalation from TB triage to OncoSphere tumor board", "#ef4444"),
+        ("💌", "Patient Letters",   "Grade-5 empathetic handouts with next-step checklists", "#a78bfa"),
     ]
-    for col_f, (icon, title, desc) in zip([f1, f2, f3, f4, f5], features):
+    for col_f, (icon, title, desc, accent) in zip([f1, f2, f3, f4, f5], features):
         with col_f:
             st.markdown(f"""
-            <div class="glass-card" style="text-align:center; min-height:140px">
-                <div style="font-size:1.8rem; margin-bottom:6px">{icon}</div>
-                <div style="font-size:0.85rem; font-weight:700; color:#e2e8f0; margin-bottom:4px">{title}</div>
-                <div style="font-size:0.7rem; color:#94a3b8; line-height:1.4">{desc}</div>
+            <div class="glass-card" style="text-align:center; min-height:150px; position:relative; overflow:hidden;
+                        transition:all 0.3s cubic-bezier(.4,0,.2,1)">
+                <div style="position:absolute; top:0; left:0; right:0; height:2px;
+                            background:linear-gradient(90deg, transparent, {accent}, transparent)"></div>
+                <div style="font-size:1.6rem; margin-bottom:8px; margin-top:4px">{icon}</div>
+                <div style="font-size:0.82rem; font-weight:700; color:#e2e8f0; margin-bottom:6px">{title}</div>
+                <div style="font-size:0.68rem; color:#64748b; line-height:1.5">{desc}</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -1653,11 +1877,17 @@ else:
 # Footer
 # ═══════════════════════════════════════════════════════════════
 st.markdown("""
-<div style="text-align:center; padding:20px 0; margin-top:40px;
-            border-top:1px solid rgba(148,163,184,0.1)">
-    <span style="color:#475569; font-size:0.75rem">
-        Aegis-Sphere v1.0 · AI-Assisted Oncology Decision Support ·
-        DPDP Act 2023 Compliant · Not a substitute for clinical judgment
-    </span>
+<div style="text-align:center; padding:24px 0; margin-top:48px; position:relative">
+    <div style="position:absolute; top:0; left:10%; right:10%; height:1px;
+                background:linear-gradient(90deg, transparent, rgba(99,102,241,0.2), rgba(168,85,247,0.2), transparent)"></div>
+    <div style="display:inline-block; padding:4px 16px; border-radius:100px; font-size:0.6rem;
+                font-weight:600; letter-spacing:1.5px; background:rgba(99,102,241,0.06);
+                color:#475569; border:1px solid rgba(99,102,241,0.08); margin-bottom:8px;
+                font-family:'JetBrains Mono',monospace">
+        AEGIS-SPHERE v1.0
+    </div>
+    <div style="color:#334155; font-size:0.7rem; margin-top:6px">
+        AI-Assisted Oncology Decision Support · DPDP Act 2023 Compliant · Not a substitute for clinical judgment
+    </div>
 </div>
 """, unsafe_allow_html=True)

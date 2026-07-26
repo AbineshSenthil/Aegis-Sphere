@@ -21,7 +21,7 @@ venv.bak/
 .DS_Store
 
 # Environment variables
-.env
+
 .env.local
 .env.*.local
 *.credentials
@@ -43,3 +43,4 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+replacements.txt
